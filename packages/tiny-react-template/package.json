@@ -1,14 +1,14 @@
 {
-  "name": "react-demo",
+  "name": "tiny-react",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
-  "author": "不吃苦瓜片",
-  "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server",
-    "build": "rm -rf dist && webpack"
+    "start": "webpack-dev-server"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.11.4",
     "@babel/preset-env": "^7.11.0",
@@ -19,5 +19,6 @@
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
-  }
+  },
+  "dependencies": {}
 }
