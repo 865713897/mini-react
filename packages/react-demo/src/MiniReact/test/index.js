@@ -5,5 +5,5 @@ import Component from "./Component";
 export default {
   createElement,
   render,
-  Component,
+  Component
 };

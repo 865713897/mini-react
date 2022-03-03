@@ -6,3 +6,4 @@ export default function isFunctionComponent(virtualDOM) {
     type && isFunction(virtualDOM) && !(type.prototype && type.prototype.render)
   );
 }
+

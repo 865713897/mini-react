@@ -6,6 +6,7 @@
       {
         "pragma": "MiniReact.createElement"
       }
-    ]
+    ],
+    "@babel/preset-typescript"
   ]
 }

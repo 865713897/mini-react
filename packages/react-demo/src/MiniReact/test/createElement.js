@@ -1,3 +1,4 @@
+// createElement方法
 export default function createElement(type, props, ...children) {
   const childElements = [].concat(...children).reduce((result, child) => {
     if (child !== false && child !== true && child !== null) {
