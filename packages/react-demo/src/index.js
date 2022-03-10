@@ -39,11 +39,10 @@ const virtualDom1 = (
 );
 
 function Demo1(props) {
-  console.log(props, "props");
   return (
     <div className="demo1">
       demo1
-      <span>&heart;</span>
+      <span>&hearts;</span>
     </div>
   );
 }
@@ -55,6 +54,19 @@ class Demo2 extends MiniReact.Component {
       title: "Default Title",
     };
   }
+
+  componentWillReceiveProps(nextProps) {
+    console.log("componentWillReceiveProps");
+  }
+
+  componentWillUpdate() {
+    console.log("componentWillUpdate");
+  }
+
+  componentDidUpdate() {
+    console.log("componentDidUpdate");
+  }
+
   // 点击按钮
   onBtnClick = () => {
     this.setState({
@@ -62,10 +74,10 @@ class Demo2 extends MiniReact.Component {
     });
   };
   render() {
-    console.log(this.state.title);
     return (
       <div className="demo2">
         <span style={{ color: "red", fontSize: "24px" }}>demo2</span>
+        {this.props.title}
         <div>
           <div style={{ color: "green", fontSize: "32px" }}>
             {this.state.title}
@@ -77,9 +89,50 @@ class Demo2 extends MiniReact.Component {
   }
 }
 
-MiniReact.render(<Demo2 />, root);
-// MiniReact.render(virtualDom, root);
+class Alter extends MiniReact.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div>
+        <div>姓名：{this.props.name}</div>
+        <div>年龄：{this.props.age}</div>
+      </div>
+    );
+  }
+}
+
+class DemoRef extends MiniReact.Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  componentDidMount() {
+    console.log("componentDidMount");
+  }
+
+  handleClick() {
+    console.log(this.input.value);
+    console.log(this.demoRef);
+  }
+
+  render() {
+    return (
+      <div>
+        <input type="text" ref={(input) => (this.input = input)} />
+        <button onClick={this.handleClick}>点击</button>
+        <Alter ref={(ref) => (this.demoRef = ref)} name="小黑" age={22} />
+      </div>
+    );
+  }
+}
+
+MiniReact.render(<DemoRef />, root);
+// MiniReact.render(<Demo2 title="before" />, root);
 // setTimeout(() => {
-//   MiniReact.render(virtualDom1, root);
+//   MiniReact.render(<Demo2 title="after" />, root);
 // }, 2000);
-console.log(virtualDom);
+// console.log(virtualDom);
